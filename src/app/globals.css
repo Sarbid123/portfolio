@@ -12,4 +12,10 @@ body {
     "Noto Color Emoji";
 }
 
+body {
+  @apply bg-white text-black transition-colors duration-300;
+}
 
+.dark body {
+  @apply bg-neutral-950 text-white;
+}
