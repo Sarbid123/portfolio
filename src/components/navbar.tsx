@@ -28,29 +28,39 @@ export default function Navbar() {
   const pathname = usePathname();
   const lang = pathname.startsWith("/en") ? "en" : "fr";
 
+
   const [darkMode, setDarkMode] = useState(false);
 
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme");
+
     if (savedTheme === "dark") {
-      setDarkMode(true);
       document.documentElement.classList.add("dark");
+      setDarkMode(true);
+    } else {
+      document.documentElement.classList.remove("dark");
+      setDarkMode(false);
     }
   }, []);
 
-  useEffect(() => {
-    if (darkMode) {
-      document.documentElement.classList.add("dark");
-      localStorage.setItem("theme", "dark");
-    } else {
-      document.documentElement.classList.remove("dark");
+
+  const toggleTheme = () => {
+    const html = document.documentElement;
+
+    if (html.classList.contains("dark")) {
+      html.classList.remove("dark");
       localStorage.setItem("theme", "light");
+      setDarkMode(false);
+    } else {
+      html.classList.add("dark");
+      localStorage.setItem("theme", "dark");
+      setDarkMode(true);
     }
-  }, [darkMode]);
+  };
 
 
   return (
-    <nav className="fixed top-0 left-0 z-50 w-full flex items-center justify-between px-14 py-6 bg-white dark:bg-gray-900">
+    <nav className="fixed top-0 left-0 z-50 w-full flex items-center justify-between px-14 py-6 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800 backdrop-blur">
 
       {/* Navigation */}
       <ul className="flex gap-10 text-sm font-medium">
@@ -77,7 +87,7 @@ export default function Navbar() {
           <Mail size={18} />
         </a>
 
-        <button onClick={() => setDarkMode(!darkMode)} className="cursor-pointer transition">
+        <button onClick={toggleTheme} className="cursor-pointer transition">
           {darkMode ? <Sun size={18} className="text-yellow-400" /> : <Moon size={18} className="text-indigo-500" />}
         </button>
 

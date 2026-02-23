@@ -6,14 +6,10 @@ export const metadata: Metadata = {
   description: "Turning Vision Into Reality With Code And Design",
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="fr">
-      <body className="bg-white text-gray-900 antialiased">
+    <html lang="fr" suppressHydrationWarning>
+      <body className="min-h-screen bg-white text-gray-900 dark:bg-gray-950 dark:text-gray-100 transition-colors duration-300">
         {children}
       </body>
     </html>

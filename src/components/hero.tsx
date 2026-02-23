@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { usePathname } from "next/navigation";
@@ -38,11 +39,11 @@ export default function Hero() {
   const lang = pathname.startsWith("/en") ? "en" : "fr";
 
   return (
-    <section className="flex min-h-[calc(100vh-96px)] flex-col-reverse items-center gap-12 px-6 py-10 lg:flex-row lg:justify-between lg:px-10">
+    <section className="min-h-screen flex items-center justify-center px-6 pt-32 transition-colors duration-300 bg-white dark:bg-gray-950">
 
       {/* Text */}
       <div className="w-full space-y-6 text-center lg:w-1/2 lg:text-left">
-        <h1 className="text-4xl font-extrabold leading-tight sm:text-5xl text-gray-900 dark:text-gray-100">
+        <h1 className="text-4xl font-extrabold leading-tight tracking-tight text-black dark:text-white sm:text-5xl">
           {HERO_CONTENT[lang].title}
         </h1>
 
@@ -51,11 +52,11 @@ export default function Hero() {
         </p>
 
         <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center lg:justify-start">
-          <a href="/resume.pdf" className="rounded-lg bg-gray-900 px-6 py-3 font-medium text-white dark:bg-gray-100 dark:text-black transition hover:opacity-90">
+          <a href="/resume.pdf" className="rounded-lg bg-black text-white dark:bg-white dark:text-black px-6 py-3 font-medium shadow-md hover:shadow-lg transition-all duration-300">
             {HERO_CONTENT[lang].resume}
           </a>
 
-          <a href="#contact" className="font-medium underline underline-offset-4 text-gray-900 dark:text-gray-100">
+          <a href="#contact" className="font-medium underline underline-offset-4 text-black dark:text-white hover:opacity-70 transition">
             {HERO_CONTENT[lang].contact}
           </a>
         </div>
@@ -63,12 +64,16 @@ export default function Hero() {
 
       {/* Image */}
       <div className="relative group w-fit">
-        <img src="/images/profile.png" alt="Sarobidy Randrianjarihan­ta" className="w-[420px] rounded-lg object-cover" />
+        <img src="/images/profile.png" alt="Sarobidy Randrianjarihanta" className="w-[420px] rounded-xl object-cover shadow-lg" />
 
-        <div className="absolute inset-0 flex items-end justify-center rounded-lg bg-black/50 opacity-0 group-hover:opacity-100 transition-all duration-300">
+        <div className="absolute inset-0 flex items-end justify-center rounded-xl bg-black/50 opacity-0 group-hover:opacity-100 transition-all duration-300">
           <div className="mb-6 text-center translate-y-4 group-hover:translate-y-0 transition-all duration-300">
-            <p className="text-white text-lg font-semibold">Sarobidy RANDRIANJARIHANTA</p>
-            <p className="text-gray-200 text-sm">{HERO_CONTENT[lang].role}</p>
+            <p className="text-white text-lg font-semibold">
+              Sarobidy RANDRIANJARIHANTA
+            </p>
+            <p className="text-gray-200 text-sm">
+              {HERO_CONTENT[lang].role}
+            </p>
           </div>
         </div>
       </div>
