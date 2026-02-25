@@ -29,33 +29,27 @@ export default function Navbar() {
   const lang = pathname.startsWith("/en") ? "en" : "fr";
 
 
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(() => {
+    if (typeof window !== "undefined") {
+      return localStorage.getItem("theme") === "dark";
+    }
+    return false;
+  });
 
   useEffect(() => {
-    const savedTheme = localStorage.getItem("theme");
-
-    if (savedTheme === "dark") {
-      document.documentElement.classList.add("dark");
-      setDarkMode(true);
-    } else {
-      document.documentElement.classList.remove("dark");
-      setDarkMode(false);
-    }
-  }, []);
-
-
-  const toggleTheme = () => {
     const html = document.documentElement;
 
-    if (html.classList.contains("dark")) {
-      html.classList.remove("dark");
-      localStorage.setItem("theme", "light");
-      setDarkMode(false);
-    } else {
+    if (darkMode) {
       html.classList.add("dark");
       localStorage.setItem("theme", "dark");
-      setDarkMode(true);
+    } else {
+      html.classList.remove("dark");
+      localStorage.setItem("theme", "light");
     }
+  }, [darkMode]);
+
+  const toggleTheme = () => {
+    setDarkMode((prev) => !prev);
   };
 
 
