@@ -54,7 +54,7 @@ export default function Navbar() {
 
 
   return (
-    <nav className="fixed top-0 left-0 z-50 w-full flex items-center justify-between px-14 py-6 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800 backdrop-blur">
+    <nav className="fixed top-0 left-0 z-50 w-full flex items-center justify-between px-14 py-6 bg-white/80 dark:bg-gray-950/80 border-b border-gray-200 dark:border-gray-900 backdrop-blur-xl transition-colors duration-300">
 
       {/* Navigation */}
       <ul className="flex gap-10 text-sm font-medium">
