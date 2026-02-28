@@ -2,6 +2,7 @@
 "use client";
 
 import { usePathname } from "next/navigation";
+import TypingIntro from "@/components/TypingIntro";
 
 const HERO_CONTENT = {
   fr: {
@@ -43,6 +44,7 @@ export default function Hero() {
 
       {/* Text */}
       <div className="w-full space-y-6 text-center lg:w-1/2 lg:text-left">
+        <TypingIntro />
         <h1 className="text-4xl font-extrabold leading-tight tracking-tight text-black dark:text-white sm:text-5xl">
           {HERO_CONTENT[lang].title}
         </h1>
