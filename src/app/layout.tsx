@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "Portfolio | Développeur Web",
@@ -26,7 +27,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body className="min-h-screen bg-white text-gray-900 dark:bg-gray-950 dark:text-gray-100 transition-colors duration-300">
-        {children}
+
+        <main className="flex-grow">
+          {children}
+        </main>
+
+        <Footer />
       </body>
     </html>
   );

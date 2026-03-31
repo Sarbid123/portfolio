@@ -40,7 +40,7 @@ export default function Hero() {
   const lang = pathname.startsWith("/en") ? "en" : "fr";
 
   return (
-    <section className="min-h-screen flex items-center justify-center px-6 pt-32 transition-colors duration-300 bg-white dark:bg-gray-950">
+    <section className="min-h-screen flex items-center justify-center px-6 pt-32 pb-20 lg:pb-20 transition-colors duration-300 bg-white dark:bg-gray-950">
 
       {/* Text */}
       <div className="w-full space-y-6 text-center lg:w-1/2 lg:text-left">

@@ -77,9 +77,13 @@ export default function Navbar() {
           <Github size={18} />
         </a>
 
-        <a href="#contact" aria-label="Contact" className="text-gray-800 hover:text-black dark:text-gray-300 dark:hover:text-white transition">
+        <Link
+          href={lang === "fr" ? "/fr/contact" : "/en/contact"}
+          aria-label="Contact"
+          className="text-gray-800 hover:text-black dark:text-gray-300 dark:hover:text-white transition"
+        >
           <Mail size={18} />
-        </a>
+        </Link>
 
         <button onClick={toggleTheme} className="cursor-pointer transition">
           {darkMode ? <Sun size={18} className="text-yellow-400" /> : <Moon size={18} className="text-indigo-500" />}
