@@ -30,15 +30,12 @@ export default function Navbar() {
 
 
   const [darkMode, setDarkMode] = useState(() => {
-    if (typeof window !== "undefined") {
-      return localStorage.getItem("theme") === "dark";
-    }
-    return false;
+    if (typeof window === "undefined") return false;
+    return document.documentElement.classList.contains("dark");
   });
 
   useEffect(() => {
     const html = document.documentElement;
-
     if (darkMode) {
       html.classList.add("dark");
       localStorage.setItem("theme", "dark");
@@ -69,11 +66,11 @@ export default function Navbar() {
 
       {/* Right icons */}
       <div className="flex items-center gap-6">
-        <a href="#" aria-label="Facebook" className="text-gray-800 hover:text-black dark:text-gray-300 dark:hover:text-white transition">
+        <a href="https://www.facebook.com/SarbidRandr" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="text-gray-800 hover:text-black dark:text-gray-300 dark:hover:text-white transition">
           <Facebook size={18} />
         </a>
 
-        <a href="#" aria-label="GitHub" className="text-gray-800 hover:text-black dark:text-gray-300 dark:hover:text-white transition">
+        <a href="https://github.com/Sarbid123" target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="text-gray-800 hover:text-black dark:text-gray-300 dark:hover:text-white transition">
           <Github size={18} />
         </a>
 
@@ -86,7 +83,10 @@ export default function Navbar() {
         </Link>
 
         <button onClick={toggleTheme} className="cursor-pointer transition">
-          {darkMode ? <Sun size={18} className="text-yellow-400" /> : <Moon size={18} className="text-indigo-500" />}
+          {darkMode
+            ? <Sun size={18} className="text-yellow-400" />
+            : <Moon size={18} className="text-indigo-500" />
+          }
         </button>
 
         {/* Language switch */}

@@ -3,6 +3,7 @@
 
 import { usePathname } from "next/navigation";
 import TypingIntro from "@/components/TypingIntro";
+import Link from "next/link";
 
 const HERO_CONTENT = {
   fr: {
@@ -58,9 +59,12 @@ export default function Hero() {
             {HERO_CONTENT[lang].resume}
           </a>
 
-          <a href="#contact" className="font-medium underline underline-offset-4 text-black dark:text-white hover:opacity-70 transition">
+          <Link
+            href={lang === "fr" ? "/fr/contact" : "/en/contact"}
+            className="font-medium underline underline-offset-4 text-black dark:text-white hover:opacity-70 transition"
+          >
             {HERO_CONTENT[lang].contact}
-          </a>
+          </Link>
         </div>
       </div>
 
