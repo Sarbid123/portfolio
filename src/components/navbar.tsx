@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useLayoutEffect } from "react";
 import Link from "next/link";
 import { Github, Facebook, Mail, Sun, Moon } from "lucide-react";
 import { usePathname } from "next/navigation";
@@ -28,7 +28,7 @@ export default function Navbar() {
   const pathname = usePathname();
   const lang = pathname.startsWith("/en") ? "en" : "fr";
 
-
+  /*
   const [darkMode, setDarkMode] = useState(() => {
     if (typeof window === "undefined") return false;
     return document.documentElement.classList.contains("dark");
@@ -44,6 +44,29 @@ export default function Navbar() {
       localStorage.setItem("theme", "light");
     }
   }, [darkMode]);
+  */
+
+  const [darkMode, setDarkMode] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useLayoutEffect(() => {
+    const isDark = document.documentElement.classList.contains("dark");
+    // eslint-disable-next-line
+    setDarkMode(isDark);
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!mounted) return;
+    const html = document.documentElement;
+    if (darkMode) {
+      html.classList.add("dark");
+      localStorage.setItem("theme", "dark");
+    } else {
+      html.classList.remove("dark");
+      localStorage.setItem("theme", "light");
+    }
+  }, [darkMode, mounted]);
 
   const toggleTheme = () => {
     setDarkMode((prev) => !prev);
@@ -83,10 +106,13 @@ export default function Navbar() {
         </Link>
 
         <button onClick={toggleTheme} className="cursor-pointer transition">
-          {darkMode
-            ? <Sun size={18} className="text-yellow-400" />
-            : <Moon size={18} className="text-indigo-500" />
-          }
+          {mounted ? (
+            darkMode
+              ? <Sun size={18} className="text-yellow-400" />
+              : <Moon size={18} className="text-indigo-500" />
+          ) : (
+            <div className="w-[18px] h-[18px]" />
+          )}
         </button>
 
         {/* Language switch */}
