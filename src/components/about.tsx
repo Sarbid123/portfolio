@@ -13,7 +13,7 @@ const ABOUT_CONTENT = {
                 year: "2023 - Présent",
                 title: "Développeur Web",
                 description:
-                    "Développement d'applications web modernes avec React, Next.js et Tailwind CSS, en mettant l'accent sur la performance, l'UX et la qualité du code. Connaissance en Machine Learning.",
+                    "Étudiant en Master Informatique spécialisé en Génie Logiciel et Intelligence Artificielle à l'ISPM. Dynamique et curieux, je maîtrise des technologies comme React, Next.js, Python et JavaScript, avec des notions en Machine Learning. Je suis actuellement à la recherche d'une opportunité pour continuer à évoluer et contribuer à des projets web ambitieux."
             },
             {
                 year: "Objectif",
@@ -32,7 +32,7 @@ const ABOUT_CONTENT = {
                 year: "2023 - Present",
                 title: "Web Developer",
                 description:
-                    "Building modern web applications using React, Next.js and Tailwind CSS with a strong focus on performance, UX and clean architecture. Knowledge of machine learning.",
+                    "Master's student in Computer Science specializing in Software Engineering and Artificial Intelligence at ISPM. Driven and curious, I work with technologies such as React, Next.js, Python and JavaScript, with a background in Machine Learning. I am currently looking for an opportunity to keep growing and contribute to ambitious web projects."
             },
             {
                 year: "Goal",

@@ -12,7 +12,6 @@ const NAV_CONTENT = {
       { label: "À propos", href: "/fr/about" },
       { label: "Projets", href: "/fr/projects" },
     ],
-    switchLabel: "EN",
   },
   en: {
     links: [
@@ -20,31 +19,12 @@ const NAV_CONTENT = {
       { label: "About", href: "/en/about" },
       { label: "Projects", href: "/en/projects" },
     ],
-    switchLabel: "FR",
   },
 };
 
 export default function Navbar() {
   const pathname = usePathname();
   const lang = pathname.startsWith("/en") ? "en" : "fr";
-
-  /*
-  const [darkMode, setDarkMode] = useState(() => {
-    if (typeof window === "undefined") return false;
-    return document.documentElement.classList.contains("dark");
-  });
-
-  useEffect(() => {
-    const html = document.documentElement;
-    if (darkMode) {
-      html.classList.add("dark");
-      localStorage.setItem("theme", "dark");
-    } else {
-      html.classList.remove("dark");
-      localStorage.setItem("theme", "light");
-    }
-  }, [darkMode]);
-  */
 
   const [darkMode, setDarkMode] = useState(false);
   const [mounted, setMounted] = useState(false);
@@ -116,9 +96,37 @@ export default function Navbar() {
         </button>
 
         {/* Language switch */}
-        <Link href={lang === "fr" ? pathname.replace("/fr", "/en") : pathname.replace("/en", "/fr")} className="text-sm font-semibold text-gray-900 dark:text-gray-100 hover:underline">
-          {NAV_CONTENT[lang].switchLabel}
-        </Link>
+        <div className="relative flex items-center bg-gray-100 dark:bg-gray-800 rounded-full p-1 text-xs font-semibold">
+
+          {/* Pill qui glisse */}
+          <span
+            className={`absolute top-1 bottom-1 w-[calc(50%-4px)] rounded-full bg-white dark:bg-gray-950 shadow transition-all duration-300 ${lang === "en" ? "left-1" : "left-[calc(50%+2px)]"
+              }`}
+          />
+
+          {/* Bouton EN */}
+          <Link
+            href={pathname.replace(`/${lang}`, "/en")}
+            className={`relative z-10 px-3 py-1 rounded-full transition-colors duration-300 ${lang === "en"
+              ? "text-black dark:text-white"
+              : "text-gray-400 hover:text-gray-600 dark:hover:text-gray-300"
+              }`}
+          >
+            EN
+          </Link>
+
+          {/* Bouton FR */}
+          <Link
+            href={pathname.replace(`/${lang}`, "/fr")}
+            className={`relative z-10 px-3 py-1 rounded-full transition-colors duration-300 ${lang === "fr"
+              ? "text-black dark:text-white"
+              : "text-gray-400 hover:text-gray-600 dark:hover:text-gray-300"
+              }`}
+          >
+            FR
+          </Link>
+
+        </div>
       </div>
     </nav>
   );
