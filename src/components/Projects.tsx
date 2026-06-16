@@ -13,7 +13,7 @@ const PROJECTS = {
                 description:
                     "Un portfolio moderne développé avec Next.js et Tailwind CSS, incluant un mode sombre et une navigation multilingue.",
                 tech: ["Next.js", "Tailwind CSS", "TypeScript"],
-                live: "#",
+                live: "https://sarobidy-dev.vercel.app/",
                 github: "https://github.com/Sarbid123/portfolio",
             },
         ],
@@ -27,7 +27,7 @@ const PROJECTS = {
                 description:
                     "A modern portfolio built with Next.js and Tailwind CSS, featuring dark mode and multilingual support.",
                 tech: ["Next.js", "Tailwind CSS", "TypeScript"],
-                live: "#",
+                live: "https://sarobidy-dev.vercel.app/",
                 github: "https://github.com/Sarbid123/portfolio",
             },
         ],
