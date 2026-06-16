@@ -85,7 +85,7 @@ export default function Hero() {
               <div className="absolute left-0 top-[calc(100%+8px)] w-full min-w-max rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 overflow-hidden shadow-lg z-50">
 
                 <a
-                  href={`https://docs.google.com/viewer?url=${encodeURIComponent("https://sarobidy-randria.vercel.app/fichiers/resume.pdf")}&embedded=true`}
+                  href={`https://docs.google.com/viewer?url=${encodeURIComponent("https://sarobidy-dev.vercel.app/fichiers/resume.pdf")}&embedded=true`}
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => setShowMenu(false)}
