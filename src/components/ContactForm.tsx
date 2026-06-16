@@ -45,18 +45,31 @@ export default function ContactForm() {
         setForm({ ...form, [e.target.name]: e.target.value });
     };
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(false);
+
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+        setLoading(true);
+        setError(false);
 
-        // Simulation envoi (API plus tard)
-        console.log(form);
-        setSent(true);
+        try {
+            const res = await fetch("/api/contact", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(form),
+            });
 
-        setForm({
-            name: "",
-            email: "",
-            message: "",
-        });
+            if (!res.ok) throw new Error();
+
+            setSent(true);
+            setForm({ name: "", email: "", message: "" });
+
+        } catch {
+            setError(true);
+        } finally {
+            setLoading(false);
+        }
     };
 
     return (
@@ -148,14 +161,21 @@ export default function ContactForm() {
                         {/* Bouton style dev */}
                         <button
                             type="submit"
-                            className="w-fit px-6 py-3 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white font-mono text-sm tracking-wide transition shadow-md hover:shadow-indigo-500/20"
+                            disabled={loading}
+                            className="w-fit px-6 py-3 rounded-lg bg-indigo-600 hover:bg-indigo-700 disabled:opacity-50 text-white font-mono text-sm tracking-wide transition shadow-md"
                         >
-                            {lang === "fr" ? "> " + t.button : "> " + t.button}
+                            {loading
+                                ? (lang === "fr" ? "> Envoi..." : "> Sending...")
+                                : "> " + t.button}
                         </button>
 
                         {sent && (
-                            <p className="font-mono text-green-500 text-sm">
-                                {t.success}
+                            <p className="font-mono text-green-500 text-sm">{t.success}</p>
+                        )}
+
+                        {error && (
+                            <p className="font-mono text-red-500 text-sm">
+                                {lang === "fr" ? "Erreur lors de l'envoi. Réessayez." : "Error sending message. Please try again."}
                             </p>
                         )}
                     </form>

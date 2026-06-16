@@ -99,12 +99,16 @@ export default function Projects() {
 
                                 {/* Links */}
                                 <div className="flex gap-6 text-sm font-medium">
-                                    <a
-                                        href={project.live}
-                                        className="hover:underline text-indigo-600 dark:text-indigo-400"
-                                    >
-                                        🔗 {lang === "fr" ? "Voir le projet" : "Live"}
-                                    </a>
+                                    {project.live !== "#" && (
+                                        <a
+                                            href={project.live}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="hover:underline text-indigo-600 dark:text-indigo-400"
+                                        >
+                                            🔗 {lang === "fr" ? "Voir le projet" : "Live"}
+                                        </a>
+                                    )}
 
                                     <a
                                         href={project.github}
