@@ -43,8 +43,7 @@ export default function Hero() {
   const [showMenu, setShowMenu] = useState(false);
 
   return (
-    <section className="min-h-screen flex items-center justify-center px-6 pt-32 pb-20 lg:pb-20 transition-colors duration-300 bg-white dark:bg-gray-950">
-
+    <section className="min-h-screen flex flex-col lg:flex-row items-center justify-center gap-12 px-6 pt-32 pb-20 transition-colors duration-300 bg-white dark:bg-gray-950">
       {/* Text */}
       <div className="w-full space-y-6 text-center lg:w-1/2 lg:text-left">
         <TypingIntro />
@@ -125,8 +124,8 @@ export default function Hero() {
       </div >
 
       {/* Image */}
-      < div className="relative group w-fit" >
-        <img src="/images/profile.png" alt="Sarobidy Randrianjarihanta" className="w-[420px] rounded-xl object-cover shadow-lg" />
+      <div className="relative group w-full max-w-[320px] lg:w-fit lg:max-w-none">
+        <img src="/images/profile.png" alt="Sarobidy Randrianjarihanta" className="w-full lg:w-[420px] rounded-xl object-cover shadow-lg" />
 
         <div className="absolute inset-0 flex items-end justify-center rounded-xl bg-black/50 opacity-0 group-hover:opacity-100 transition-all duration-300">
           <div className="mb-6 text-center translate-y-4 group-hover:translate-y-0 transition-all duration-300">
